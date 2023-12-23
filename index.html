@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+function mySetTimeout(delay) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, delay);
+    });
+}
+
+async function toyShop(customDelay) {
+    try {
+        console.log(Preparing the toy with a delay of ${customDelay} milliseconds...);
+        await mySetTimeout(customDelay);
+
+        console.log('Delivering toys...');
+        await deliverToys(); // 2 seconds
+
+        console.log('Selling the toy...');
+        await mySetTimeout(1000); // 1 second
+
+        console.log('Toy sold successfully!');
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+}
+
+function deliverToys() {
+    return new Promise((resolve) => {
+        setTimeout(resolve, 2000); // 2 seconds
+    });
+}
+
+// Example usage with custom delays
+const customDelay = 5000; // Set the custom delay to 5 seconds
+toyShop(customDelay);
+
+
+
+
+
+    </script>
+</body>
+</html>
